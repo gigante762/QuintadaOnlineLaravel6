@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateProduct;
 use App\Models\Product;
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateProduct $request)
     {
         //dd($request->all());
 
@@ -105,7 +106,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $productId)
+    public function update(StoreUpdateProduct $request, $productId)
     {
         if(!$product= $this->repository->find($productId))
             return redirect()->route('products.index');
@@ -115,8 +116,6 @@ class ProductController extends Controller
         if ($request->hasFile('image') && $request->file('image')->isValid())
         {
            
-            $product->update($data);
-
             $path = $request->file('image')->store(
                 'products'
             );
@@ -125,6 +124,8 @@ class ProductController extends Controller
 
             $product->images()->create($imgdata);
         }
+        
+        $product->update($data);
         
         
         return redirect()->route('products.edit',$product->id);

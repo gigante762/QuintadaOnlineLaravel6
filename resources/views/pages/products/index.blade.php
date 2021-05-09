@@ -28,7 +28,7 @@
                     <td>
                         <img width='100px' src="{{url('storage/'.$product->images->first()->path)}}" alt="foto-{{$product->title}}">
                     </td>
-                    <td class="d-block">
+                    <td class="d-flex">
                         <a href="{{route('products.edit',$product->id)}}" class="btn btn-warning">Editar</a>
                         
                         <form action="{{route('products.destroy',$product->id)}}" method="post" >
