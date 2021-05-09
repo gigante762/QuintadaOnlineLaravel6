@@ -15,14 +15,20 @@ class SiteController extends Controller
         $this->repository = $product;
     }
     
+     /**
+     * Display the index view
+     */
     public function index()
     {
-        $products = $this->repository->paginate(4);
+        $products = $this->repository->paginate();
 
         return view('pages.site.index',['products'=>$products]);
     
     }
 
+     /**
+     * Display an products view
+     */
     public function show($code)
     {
 
@@ -33,9 +39,52 @@ class SiteController extends Controller
     
     }
 
+     /**
+     * Search for products
+     */
+    public function search(Request $request)
+    {
+        if (!$products = $this->repository->search($request->filter))
+            return redirect()->back();
+
+        $filters = $request->only(['filter','page']);
+
+        return view('pages.site.index',
+        [
+            'products'=>$products,
+            'filters'=>$filters
+        ]
+        );
+    }
+
+     /**
+     * Display contato view
+     */
     public function contato()
     {
         return view('pages.site.contato');
     }
+
+    /**
+     * Display cart view
+     */
+    public function cart()
+    {
+        $cart = [];
+
+        if(session()->exists('cart'))
+        {
+            $cart = session('cart');
+        }
+
+        $products = $this->repository->whereIn('code',array_keys($cart))->get();
+        
+        return view('pages.site.cart',[
+            'products'=>$products,
+            'cart' => $cart,
+            'total' => 0
+        ]);
+    }
+
 }
 

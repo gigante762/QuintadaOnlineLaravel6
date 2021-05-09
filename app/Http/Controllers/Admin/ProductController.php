@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->repository->paginate(5);
+        $products = $this->repository->paginate();
 
         return view('pages.products.index',['products'=>$products]);
     }

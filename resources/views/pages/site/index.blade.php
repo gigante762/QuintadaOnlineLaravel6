@@ -10,16 +10,16 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="3000">
-                <img src="img/slides/slide01.jpg" class="d-none d-md-block w-100" alt="">
-                <img src="img/slides/slide01small.jpg" class="d-block d-md-none  w-100" alt="">
+                <img src="{{url('storage/slides/slide01.jpg')}}" class="d-none d-md-block w-100" alt="">
+                <img src="{{url('slides/slide01small.jpg')}}" class="d-block d-md-none  w-100" alt="">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="img/slides/slide01.jpg" class="d-none d-md-block w-100" alt="">
-                <img src="img/slides/slide01small.jpg" class="d-block d-md-none  w-100" alt="">
+                <img src="{{url('storage/slides/slide01.jpg')}}" class="d-none d-md-block w-100" alt="">
+                <img src="{{url('slides/slide01small.jpg')}}" class="d-block d-md-none  w-100" alt="">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="img/slides/slide01.jpg" class="d-none d-md-block w-100" alt="">
-                <img src="img/slides/slide01small.jpg" class="d-block d-md-none  w-100" alt="">
+                <img src="{{url('storage/slides/slide01.jpg')}}" class="d-none d-md-block w-100" alt="">
+                <img src="{{url('slides/slide01small.jpg')}}" class="d-block d-md-none  w-100" alt="">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
@@ -38,25 +38,21 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-5">
-                <form class="justify-content-center justify-content-md-start mb-3 mb-md-0">
+                <form class="justify-content-center justify-content-md-start mb-3 mb-md-0" method="post" action="{{route('site.search')}}">
+                    @csrf
+                    @method('POST')
                     <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="Digite aqui o que procura">
-                        <button class="btn text-white cor-principal">Buscar</button>
+                        <input type="text" class="form-control" placeholder="Digite aqui o que procura" name='filter' value="{{ $filters['filter'] ?? '' }}">
+                        <button  type='sumbit' class="btn text-white cor-principal">Buscar</button>
                     </div>
                 </form>
             </div>
             <div class="col-12 col-md-7">
                 <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
-                    <form class="d-inline-block">
-                        <select class="form-select form-select-sm">
-                            <option>Ordenar pelo nome</option>
-                            <option>Ordenar pelo menor preço</option>
-                            <option>Ordenar pelo maior preço</option>
-                        </select>
-                    </form>
-                    <nav class="d-inline-block me-3  pagination pagination-sm my-0">
-                        {{ $products->links() }}
-                    </nav>
+
+                    {{-- @include('pages.site.includes.orderby') --}}
+
+                    @include('pages.site.includes.pagination')
                     
                 </div>
             </div>
@@ -84,10 +80,10 @@
                         </p>
                     </div>
                     <div class="card-footer">
-                        <a href="carrinho.html" class="btn  mt-2 d-block text-white cor-principal">
+                        <a href="{{route('cart.add',[$product->code,1])}}" class="btn mt-2 d-block text-white cor-principal">
                             Adicionar ao Carrinho
                         </a>
-                        <small class="text-success">320,5kg em estoque</small>
+                        {{-- <small class="text-success">320,5kg em estoque</small> --}}
                     </div>
                 </div>
             </div>
@@ -151,19 +147,22 @@
         <div class="row pb-3">
             <div class="col-12">
                 <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
-                    <form class="d-inline-block">
-                        <select class="form-select form-select-sm">
-                            <option>Ordenar pelo nome</option>
-                            <option>Ordenar pelo menor preço</option>
-                            <option>Ordenar pelo maior preço</option>
-                        </select>
-                    </form>
-                    <nav class="d-inline-block me-3  pagination pagination-sm my-0">
-                        {{ $products->links() }}
-                    </nav>
+                    
+                    {{-- @include('pages.site.includes.orderby') --}}
+
+                    @include('pages.site.includes.pagination')
                 </div>
             </div>
         </div>
     </div>
 </main>
+
+<script>
+let select = document.querySelector('select')
+select.addEventListener('change',()=>{
+    select.parentElement.submit()
+})
+
+
+</script>
 @endsection

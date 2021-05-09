@@ -26,7 +26,7 @@
     <div class="d-flex flex-column wrapper">
         <nav class="navbar navbar-expand-lg navbar-dark bg-danger border-bottom shadow-sm mb-3 cor-principal">
             <div class="container">
-                <a class="navbar-brand" href=""><b>Sistema de Pedidos</b></a>
+                <a class="navbar-brand" href="{{route('site.index')}}"><b>Sistema de Pedidos</b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target=".navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -50,8 +50,14 @@
                             </li>
                             <li class="nav-item">
                                 <span class="badge rounded-pill bg-light position-absolute ms-4 mt-0 cor-principal-text"
-                                    title="5 produto(s) no carrinho"><small>5</small></span>
-                                <a href="carrinho.html" class="nav-link text-white">
+                                    title="5 produto(s) no carrinho"><small>
+                                        @if(session('cart'))
+                                            {{array_sum( session('cart') )}}
+                                        @else
+                                            0
+                                        @endif
+                                    </small></span>
+                                <a href="{{route('site.cart')}}" class="nav-link text-white">
                                     <i class="bi-cart" style="font-size:24px;line-height:24px;"></i>
                                 </a>
                             </li>
