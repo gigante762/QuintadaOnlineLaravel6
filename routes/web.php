@@ -10,7 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('admin')
+    ->namespace('Admin')
+    //->middleware('auth')
+    ->group(function () {
+        
+        Route::delete('products/{productId}/images/{imageId}','ProductController@deleteImage')->name('products.image.destroy');
+        Route::resource('products','ProductController');
 });
+
+
+Route::get('/', 'SiteController@index')->name('site.index');
+Route::get('/products/{code}', 'SiteController@show')->name('site.product');
+Route::get('/contato', 'SiteController@contato')->name('site.contato');
+
