@@ -4,9 +4,20 @@
     <h3>Listar todos os produtos</h3>
 
     <div class="container">
-        <h1>Produtos</h1>
-        <a href="{{route('products.create')}}" class="btn btn-primary">Criar novo produto</a>
+       <div class="row">
+           <div class="col">
+               <h1>Produtos</h1>
+            <a href="{{route('products.create')}}" class="btn btn-primary">Criar novo produto</a>
+           </div>
+           <div class="col">
+               Páginação
+            {{ $products->links() }}
+           </div>
+       </div>
+        
+       
     </div>
+   
 
     <table class="table">
         <thead>
@@ -40,4 +51,6 @@
             @endforeach
         </tbody>
     </table>
+
+    {{ $products->links() }}
 @endsection

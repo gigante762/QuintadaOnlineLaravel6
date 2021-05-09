@@ -23,7 +23,7 @@
                    {{$product->description}}
                 </p>
                 <p>
-                    <button class="btn btn-lg btn-danger mb-3 mb-xl-0 me-2">
+                    <button class="btn btn-lg  mb-3 mb-xl-0 me-2  text-white cor-principal">
                         <i class="bi-cart"></i> Adicionar ao Carrinho
                     </button>
                     <button class="btn btn-lg btn-outline-danger">

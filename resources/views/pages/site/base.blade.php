@@ -24,7 +24,7 @@
 
 <body>
     <div class="d-flex flex-column wrapper">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-danger border-bottom shadow-sm mb-3">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger border-bottom shadow-sm mb-3 cor-principal">
             <div class="container">
                 <a class="navbar-brand" href=""><b>Sistema de Pedidos</b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -49,7 +49,7 @@
                                 <a href="login.html" class="nav-link text-white">Entrar</a>
                             </li>
                             <li class="nav-item">
-                                <span class="badge rounded-pill bg-light text-danger position-absolute ms-4 mt-0"
+                                <span class="badge rounded-pill bg-light position-absolute ms-4 mt-0 cor-principal-text"
                                     title="5 produto(s) no carrinho"><small>5</small></span>
                                 <a href="carrinho.html" class="nav-link text-white">
                                     <i class="bi-cart" style="font-size:24px;line-height:24px;"></i>

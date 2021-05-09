@@ -6,6 +6,13 @@ body {
     min-height: 100vh;
 }
 
+.cor-principal {
+    background-color: #064265 !important;
+}
+.cor-principal-text {
+   color: #064265 !important;
+}
+
 p.truncar-3l {
     display: -webkit-box;
     -webkit-line-clamp: 3;

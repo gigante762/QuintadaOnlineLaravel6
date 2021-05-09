@@ -22,7 +22,7 @@
                     <label for="txtMensagem">Mensagem</label>
                 </div>
 
-                <button type="button" onclick="window.location.href='/confirmcontato.html'" class="btn btn-lg btn-danger">Enviar Mensagem</button>
+                <button type="button" onclick="window.location.href='/confirmcontato.html'" class="btn btn-lg  text-white cor-principal">Enviar Mensagem</button>
 
                 <p class="mt-3">
                     Faremos nosso melhor para responder sua mensagem em até 2 dias úteis.

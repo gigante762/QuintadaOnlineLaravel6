@@ -41,7 +41,7 @@
                 <form class="justify-content-center justify-content-md-start mb-3 mb-md-0">
                     <div class="input-group input-group-sm">
                         <input type="text" class="form-control" placeholder="Digite aqui o que procura">
-                        <button class="btn btn-danger">Buscar</button>
+                        <button class="btn text-white cor-principal">Buscar</button>
                     </div>
                 </form>
             </div>
@@ -68,7 +68,7 @@
             @foreach ($products as $product)
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
                 <div class="card text-center bg-light">
-                    <a href="#" class="position-absolute end-0 p-2 text-danger">
+                    <a href="#" class="position-absolute end-0 p-2 text-danger ">
                         <i class="bi-suit-heart" style="font-size: 24px; line-height: 24px;"></i>
                     </a>
                     <a href="{{route('site.product',$product->code)}}">
@@ -84,7 +84,7 @@
                         </p>
                     </div>
                     <div class="card-footer">
-                        <a href="carrinho.html" class="btn btn-danger mt-2 d-block">
+                        <a href="carrinho.html" class="btn  mt-2 d-block text-white cor-principal">
                             Adicionar ao Carrinho
                         </a>
                         <small class="text-success">320,5kg em estoque</small>
