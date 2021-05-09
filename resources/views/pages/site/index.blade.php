@@ -158,10 +158,10 @@
 </main>
 
 <script>
-let select = document.querySelector('select')
+/* let select = document.querySelector('select')
 select.addEventListener('change',()=>{
     select.parentElement.submit()
-})
+}) */
 
 
 </script>

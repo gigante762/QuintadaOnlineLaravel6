@@ -9,7 +9,7 @@
             @if ($cart)
             <ul class="list-group mb-3">
                 @foreach ($products as $product)
-                    
+                @if ($cart[$product->code])
                <?php $total += $product->price * $cart[$product->code] ?>
                 <li class="list-group-item py-3">
                     <div class="row g-3">
@@ -20,8 +20,8 @@
                         </div>
                         <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left align-self-center">
                             <h4>
-                                <b><a href="#" class="text-decoration-none text-danger">
-                                        {{$product->name}}</a></b>
+                                <b><a href="{{route('site.product',$product->code)}}" class="text-decoration-none cor-principal-text">
+                                        {{$product->title}}</a></b>
                             </h4>
                             <h5>
                                 {{$product->description}}
@@ -48,6 +48,7 @@
                         </div>
                     </div>
                 </li>
+                @endif
                 @endforeach
                 
                 <li class="list-group-item py-3">
@@ -56,10 +57,10 @@
                             
                             Valor Total: R$ {{ number_format($total,2,',','.') }}
                         </h4>
-                        <a href="index.html" class="btn btn-outline-success btn-lg">
+                        <a href="{{route('site.index')}}" class="btn btn-outline-success btn-lg">
                             Continuar Comprando
                         </a>
-                        <a href="fechamento_itens.html" class="btn btn-danger btn-lg ms-2 mt-xs-3">Fechar Compra</a>
+                        <a href="{{route('site.fechamento-itens')}}" class="btn btn-lg ms-2 mt-xs-3  text-white cor-principal">Fechar Compra</a>
                     </div>
                 </li>
             </ul>

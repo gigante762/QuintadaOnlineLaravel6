@@ -19,7 +19,7 @@ Route::prefix('admin')
         Route::resource('products','ProductController');
 });
 
-
+/* Site */
 Route::get('/', 'SiteController@index')->name('site.index');
 Route::match(['POST','GET'],'/products/search', 'SiteController@search')->name('site.search');
 Route::get('/products/{code}', 'SiteController@show')->name('site.product');
@@ -30,5 +30,11 @@ Route::get('/cartadd/{productCode}/{amount}', 'Cart@add')->name('cart.add');
 Route::get('/cartaremove/{productCode}/{amount}', 'Cart@remove')->name('cart.remove');
 Route::get('/cartdeleteitem/{productCode}', 'Cart@deleteItem')->name('cart.deleteitem');
 Route::get('/cart', 'SiteController@cart')->name('site.cart');
+
+/* fechamento dos itens */
+Route::get('/fechamento-itens', 'SiteController@fechamentoItens')->name('site.fechamento-itens');
+
+/* Checkout */
+Route::get('/checkout', 'SiteController@checkout')->name('site.checkout');
 
 

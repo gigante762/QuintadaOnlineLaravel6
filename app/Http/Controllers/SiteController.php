@@ -57,7 +57,7 @@ class SiteController extends Controller
         );
     }
 
-     /**
+    /**
      * Display contato view
      */
     public function contato()
@@ -75,6 +75,7 @@ class SiteController extends Controller
         if(session()->exists('cart'))
         {
             $cart = session('cart');
+
         }
 
         $products = $this->repository->whereIn('code',array_keys($cart))->get();
@@ -84,6 +85,49 @@ class SiteController extends Controller
             'cart' => $cart,
             'total' => 0
         ]);
+    }
+
+    /**
+     * Display contato view
+     */
+    public function checkout()
+    {
+        $cart = [];
+
+        if(session()->exists('cart'))
+        {
+            $cart = session('cart');
+        }
+
+        $products = $this->repository->whereIn('code',array_keys($cart))->get();
+        return view('pages.site.checkout', [
+            'products'=>$products,
+            'cart' => $cart,
+            'total' => 0
+            ]);
+    }
+
+    /**
+     * Display contato view
+     */
+    public function fechamentoItens()
+    {
+        $cart = [];
+
+        if(session()->exists('cart'))
+        {
+            $cart = session('cart');
+        }
+
+        $products = $this->repository->whereIn('code',array_keys($cart))->get();
+        
+        return view('pages.site.fechamento-itens',
+        [
+            'products'=>$products,
+            'cart' => $cart,
+            'total' => 0
+            ]
+        );
     }
 
 }
