@@ -47,7 +47,8 @@ class Cart extends Controller
 
         if(isset($this->cart[$productCode]))
         {
-            $this->cart[$productCode]-= $amout;
+            if($this->cart[$productCode]>0)
+                $this->cart[$productCode]-= $amout;
         }
         session()->put('cart',$this->cart);
 
