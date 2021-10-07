@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-icons.css')}}">
     <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
-    <title>Quitanda Online :: @yield('title')</title>
+    <title>Sistema de Pedidos :: @yield('title')</title>
 </head>
 
 <body>

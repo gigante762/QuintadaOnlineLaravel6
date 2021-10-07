@@ -1,5 +1,7 @@
 @extends('pages.site.base')
 
+@section('title','Produto')
+
 @section('content')
 <main class="flex-fill">
     <div class="container">
@@ -23,9 +25,9 @@
                    {{$product->description}}
                 </p>
                 <p>
-                    <button class="btn btn-lg  mb-3 mb-xl-0 me-2  text-white cor-principal">
+                    <a href="{{route('cart.add',[$product->code,1])}}" class="btn btn-lg  mb-3 mb-xl-0 me-2  text-white cor-principal">
                         <i class="bi-cart"></i> Adicionar ao Carrinho
-                    </button>
+                    <a class="fa fa-address-book-o" aria-hidden="true">
                     <button class="btn btn-lg btn-outline-danger">
                         <i class="bi-heart"></i> Adicionar aos Favoritos
                     </button>

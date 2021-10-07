@@ -1,5 +1,8 @@
 @extends('pages.site.base')
 
+@section('title','Página Inicial')
+
+
 @section('content')
 <div class="container">
     <div id="carouselMain" class="carousel slide carousel-dark" data-bs-ride="carousel">

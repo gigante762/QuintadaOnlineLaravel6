@@ -1,5 +1,7 @@
 @extends('pages.site.base')
 
+@section('title','Contato')
+
 @section('content')
 <main class="flex-fill">
     <div class="container">
